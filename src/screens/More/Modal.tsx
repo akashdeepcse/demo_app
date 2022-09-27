@@ -1,6 +1,6 @@
 import {View} from 'react-native';
 import React, {useCallback, useEffect, useState} from 'react';
-import {AddNewText, DataList, ModalTopBar} from '../../components';
+import {DataList, ModalTopBar} from '../../components';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppDispatch, RootState} from '../../redux/store';
 import {actions as userDataActions} from '../../redux/actions';
@@ -27,6 +27,7 @@ export const Modal = () => {
 
   const onCloseAddingText = () => {
     setAddingText(false);
+    setText('');
   };
 
   const onPressAdd = () => {
@@ -41,11 +42,11 @@ export const Modal = () => {
           id: Math.random() * 10 ** 5,
           title: text,
           body: text,
+          created_by: 'user',
         }),
       );
     }
     onCloseAddingText();
-    setText('');
   };
 
   const onRefreshList = () => {
@@ -63,21 +64,16 @@ export const Modal = () => {
         onPressBack={onCloseAddingText}
         onPressNext={onPressAdd}
       />
-      {addingText ? (
-        <AddNewText
-          placeholder="Add your text here"
-          text={text}
-          onTextChange={val => setText(val)}
-          onPressDone={onPressDone}
-        />
-      ) : (
-        <DataList
-          data={postsData}
-          isLoading={isLoading}
-          refreshing={isRefreshing}
-          onRefresh={onRefreshList}
-        />
-      )}
+      <DataList
+        data={postsData}
+        isLoading={isLoading}
+        refreshing={isRefreshing}
+        onRefresh={onRefreshList}
+        text={text}
+        onPressDone={onPressDone}
+        onTextChange={val => setText(val)}
+        addNexText={addingText}
+      />
     </View>
   );
 };

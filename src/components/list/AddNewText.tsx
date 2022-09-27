@@ -6,7 +6,7 @@ import {AddTextComponentProps} from '../../types';
 import {globalStyles} from '../../styles';
 
 export const AddNewText: React.FC<AddTextComponentProps> = props => {
-  const {text, placeholder, onTextChange, onPressDone} = props;
+  const {text, placeholder, onTextChange, onPressDone, containerStyle} = props;
   const textInputRef = useRef<TextInput | null>(null);
   const disabelDoneButton = Boolean(text === '');
 
@@ -18,14 +18,17 @@ export const AddNewText: React.FC<AddTextComponentProps> = props => {
 
   return (
     <View
-      style={[globalStyles.fullScreenContainerWhite, styles.contentContainer]}>
+      style={[
+        globalStyles.fullScreenContainerWhite,
+        styles.contentContainer,
+        containerStyle,
+      ]}>
       <TouchableOpacity
         activeOpacity={1}
         onPress={onFocusText}
         style={[styles.textinputContainerStyle, globalStyles.shadow]}>
         <TextInput
           ref={textInputRef}
-          autoFocus
           placeholder={placeholder}
           value={text}
           onChangeText={onTextChange}
@@ -49,10 +52,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 20,
     marginBottom: '15%',
-  },
-  contentContainer: {
     width: '90%',
     alignSelf: 'center',
+  },
+  contentContainer: {
     paddingTop: 15,
   },
   buttonStyle: {
