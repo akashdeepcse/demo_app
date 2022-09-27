@@ -5,6 +5,7 @@ import {
   View,
   Animated,
   Dimensions,
+  Keyboard,
 } from 'react-native';
 import React from 'react';
 import {Loader} from '../core';
@@ -44,6 +45,7 @@ export const DataList: React.FC<DataListProps> = props => {
     if (addNexText) {
       animateView(1);
     } else {
+      Keyboard.dismiss();
       animateView(0);
     }
   }, [addNexText, animateView]);
