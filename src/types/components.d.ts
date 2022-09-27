@@ -20,12 +20,21 @@ export declare interface ListItemProps<T> {
   index?: number;
 }
 
-export declare interface DataListProps {
+export declare interface AddTextComponentProps {
+  text?: string;
+  placeholder?: string;
+  containerStyle?: StyleProp<ViewStyle>;
+  onTextChange?: (text: string) => void;
+  onPressDone?: () => void;
+}
+
+export declare interface DataListProps extends AddTextComponentProps {
   data: PostDataProps[];
   isLoading?: boolean;
   onReachedEnd?: () => void;
   onRefresh?: () => void;
   refreshing?: boolean;
+  addNexText?: boolean;
 }
 
 export declare interface ModalTopBarProps {
@@ -34,11 +43,4 @@ export declare interface ModalTopBarProps {
   showBack?: boolean;
   onPressBack?: () => void;
   onPressNext?: () => void;
-}
-
-export declare interface AddTextComponentProps {
-  text?: string;
-  placeholder?: string;
-  onTextChange?: (text: string) => void;
-  onPressDone?: () => void;
 }

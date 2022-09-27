@@ -3,4 +3,5 @@ export declare interface PostDataProps {
   user_id: number;
   title: string;
   body: string;
+  created_by?: string;
 }

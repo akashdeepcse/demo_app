@@ -23,9 +23,12 @@ export const userDataReducer: Reducer<UserDataState, UserReducerActionTypes> = (
         isLoading: true,
       };
     case 'set_user_posts':
+      const addedByUserPosts = state.postsData.filter(
+        i => i.created_by === 'user',
+      );
       return {
         ...state,
-        postsData: action.payload!,
+        postsData: [...addedByUserPosts, ...action.payload!],
         isLoading: false,
       };
     case 'add_new_post':
