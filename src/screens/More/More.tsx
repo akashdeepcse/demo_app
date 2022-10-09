@@ -3,7 +3,7 @@ import React from 'react';
 import {colors} from '../../theme';
 import {Button} from '../../components';
 import {Navigation} from 'react-native-navigation';
-import {ModalScreen} from '../../navigator';
+import {ListViewModal} from '../../navigator';
 
 export const More = () => {
   return (
@@ -11,7 +11,7 @@ export const More = () => {
       <View style={styles.innerContainer}>
         <Button
           title="Open Modal"
-          onClick={() => Navigation.showModal(ModalScreen)}
+          onClick={() => Navigation.showModal(ListViewModal)}
         />
       </View>
     </View>
