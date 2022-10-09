@@ -1,7 +1,7 @@
 import {Layout, LayoutRoot, Navigation} from 'react-native-navigation';
 import {Provider} from 'react-redux';
-import {Home, Modal, More} from '../screens';
-import {colors} from '../theme';
+import {AddNewPost, Home, PostsList, More} from '../screens';
+import {colors, fonts} from '../theme';
 import {presistedStore, store} from '../redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import React, {ComponentType} from 'react';
@@ -21,7 +21,8 @@ const WrapperComponent =
 
 Navigation.registerComponent('Home', () => Home);
 Navigation.registerComponent('More', () => More);
-Navigation.registerComponent('Modal', () => WrapperComponent(Modal));
+Navigation.registerComponent('NewPost', () => WrapperComponent(AddNewPost));
+Navigation.registerComponent('PostsList', () => WrapperComponent(PostsList));
 
 export const RootNavigator: LayoutRoot = {
   root: {
@@ -86,15 +87,37 @@ export const RootNavigator: LayoutRoot = {
   },
 };
 
-export const ModalScreen: Layout = {
+export const ListViewModal: Layout = {
   stack: {
+    id: 'listView',
     children: [
       {
         component: {
-          name: 'Modal',
+          name: 'PostsList',
           options: {
             topBar: {
-              visible: false,
+              noBorder: true,
+              elevation: 0,
+              scrollEdgeAppearance: {active: true, noBorder: true},
+              title: {
+                text: 'My Modal',
+                fontSize: fonts.fontSize.MD,
+                alignment: 'center',
+              },
+              backButton: {
+                visible: false,
+                title: '',
+              },
+              rightButtons: [
+                {
+                  id: 'addButton',
+                  text: 'Add',
+                  color: colors.blue,
+                  fontSize: fonts.fontSize.SM,
+                  fontWeight: fonts.fontWeight.MD,
+                  allCaps: false,
+                },
+              ],
             },
           },
         },

@@ -30,6 +30,7 @@ export const AddNewText: React.FC<AddTextComponentProps> = props => {
         <TextInput
           ref={textInputRef}
           placeholder={placeholder}
+          autoFocus
           value={text}
           onChangeText={onTextChange}
         />

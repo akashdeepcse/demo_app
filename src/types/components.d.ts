@@ -28,19 +28,10 @@ export declare interface AddTextComponentProps {
   onPressDone?: () => void;
 }
 
-export declare interface DataListProps extends AddTextComponentProps {
+export declare interface DataListProps {
   data: PostDataProps[];
   isLoading?: boolean;
   onReachedEnd?: () => void;
   onRefresh?: () => void;
   refreshing?: boolean;
-  addNexText?: boolean;
-}
-
-export declare interface ModalTopBarProps {
-  title?: string;
-  showNext?: boolean;
-  showBack?: boolean;
-  onPressBack?: () => void;
-  onPressNext?: () => void;
 }
